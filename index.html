@@ -4,135 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aplicación de Notas</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f0f0f0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 0;
-            padding: 20px;
-        }
-
-        h1 {
-            color: #333;
-        }
-
-        .note-container {
-            width: 100%;
-            max-width: 600px;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .note-container input {
-            width: 100%;
-            padding: 10px;
-            margin: 5px 0;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-
-        .note-container button {
-            padding: 10px;
-            margin: 5px 0;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            background-color: #f464dc;
-            color: white;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.3s;
-            font-size: 16px;
-            font-weight: bold;
-            width: auto; /* Ajuste de ancho automático */
-        }
-
-        .note-container button:hover {
-            background-color: #e71dfa;
-            transform: scale(1.05);
-        }
-
-        .note-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .note-list li {
-            background-color: #f9f9f9;
-            margin: 5px 0;
-            padding: 10px;
-            border-radius: 5px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .note-list button {
-            background-color: #dc3545;
-            color: white;
-            border: none;
-            padding: 5px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            font-size: 12px; /* Tamaño de fuente más pequeño */
-            width: auto; /* Ajuste de ancho automático */
-        }
-
-        .note-list button:hover {
-            background-color: #c82333;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Aplicación de Notas</h1>
+    <h1>¡Mis Notas !</h1>
     <div class="note-container">
         <input type="text" id="noteInput" placeholder="Escribe una nota...">
         <button id="addNoteButton">Agregar Nota</button>
         <ul id="noteList" class="note-list"></ul>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const noteInput = document.getElementById('noteInput');
-            const addNoteButton = document.getElementById('addNoteButton');
-            const noteList = document.getElementById('noteList');
+    <div class="background-lines" id="backgroundLines"></div>
 
-            // Cargar notas desde localStorage
-            const notes = JSON.parse(localStorage.getItem('notes')) || [];
-
-            function renderNotes() {
-                noteList.innerHTML = '';
-                notes.forEach((note, index) => {
-                    const li = document.createElement('li');
-                    li.textContent = note;
-                    const deleteButton = document.createElement('button');
-                    deleteButton.textContent = '✖';
-                    deleteButton.addEventListener('click', () => {
-                        notes.splice(index, 1);
-                        localStorage.setItem('notes', JSON.stringify(notes));
-                        renderNotes();
-                    });
-                    li.appendChild(deleteButton);
-                    noteList.appendChild(li);
-                });
-            }
-
-            addNoteButton.addEventListener('click', () => {
-                const note = noteInput.value.trim();
-                if (note) {
-                    notes.push(note);
-                    localStorage.setItem('notes', JSON.stringify(notes));
-                    renderNotes();
-                    noteInput.value = '';
-                }
-            });
-
-            renderNotes();
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
