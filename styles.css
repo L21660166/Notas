@@ -17,7 +17,7 @@ h1 {
     z-index: 2;
     color: #333;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-    margin-bottom: 2px;
+    margin-bottom: 20px;
     animation: slide-in 1s ease-out;
     font-size: 36px;
     background: linear-gradient(90deg, #f464dc, #e71dfa);
